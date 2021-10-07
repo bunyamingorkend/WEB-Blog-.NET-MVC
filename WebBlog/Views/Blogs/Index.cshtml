@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebBlog.Models.Blog>
+
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+<h2>Blog Listesi</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Yeni Blog Ekle", "Create",null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+<table class="table: table-bordered" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Categori.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResimAlani)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Onay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnaSayfa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categori.KategoriAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aciklama)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Icerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ResimAlani)
+        </td>*@
+    <td>
+        @if (item.Onay)
+        {
+           <label class="form-label alert-success">Onaylı</label>
+        }
+        else
+        {
+            <label class="form-label alert-danger">Onay Bekliyor</label>
+        }
+        @*@Html.DisplayFor(modelItem => item.Onay)*@
+    </td>
+    <td>
+        @if (item.AnaSayfa)
+        {
+            <label class="form-label alert-success">Onaylı</label>
+        }
+        else
+        {
+            <label class="form-label alert-danger">Onay Bekliyor</label>
+        }
+       @* @Html.DisplayFor(modelItem => item.AnaSayfa)*@
+    </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id },new {@class="btn btn-warning btn-xs"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger btn-xs" })
+        </td>
+    </tr>
+}
+
+</table>

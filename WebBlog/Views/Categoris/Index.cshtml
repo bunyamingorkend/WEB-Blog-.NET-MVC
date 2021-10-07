@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebBlog.Models.CategorModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tablo Listesi</h2>
+<hr />
+
+<p>
+    @Html.ActionLink("Yeni Tablo Oluştur", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<hr />
+<table class="table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BlogSayisi)
+        </th>
+        <th>
+         İşlemler
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.KategoriAdi, null, new { @class = "btn btn-primary btn-xs" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BlogSayisi, null, new { @class = "btn btn-primary btn-xs" })
+    </td>
+    <td>
+        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" }) |
+        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+        @Html.ActionLink("Kategoriyi Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+    </td>
+</tr>
+}
+
+</table>
