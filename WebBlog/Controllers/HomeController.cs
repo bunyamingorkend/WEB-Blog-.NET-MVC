@@ -12,7 +12,20 @@ namespace WebBlog.Controllers
         private BlogContext context = new BlogContext();
         public ActionResult Index()
         {
-            return View(context.Bloglar.ToList());
+            var bloglar = context.Bloglar
+                .Select(i => new BlogModel()
+                {
+                    Id = i.Id,
+                    Baslik = i.Baslik.Length > 2 ? i.Baslik.Substring(0, 2) + "..." : i.Baslik,
+                    Aciklama=i.Aciklama,
+                    EklenmeTarihi=i.EklenmeTarihi,
+                     AnaSayfa =i.AnaSayfa,
+                      Onay=i.Onay,
+                       ResimAlani=i.ResimAlani
+
+                })
+                .Where(i => i.AnaSayfa == true && i.Onay==true);
+            return View(bloglar.ToList());
         }
     }
 }

@@ -20,6 +20,7 @@ namespace WebBlog.Controllers
             var kategoriler = db.Kategoriler
                 .Select(i => new CategorModel()
                 {
+                    Id=i.Id,
                     KategoriAdi = i.KategoriAdi,
                     BlogSayisi = i.Bloglar.Count()
                 }) ;
@@ -60,7 +61,6 @@ namespace WebBlog.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(categori);
         }
 

@@ -13,7 +13,7 @@
 <hr />
 <table class="table-bordered">
     <tr>
-        <th>
+        <th style="width:50%;">
             @Html.DisplayNameFor(model => model.KategoriAdi)
         </th>
         <th>
@@ -33,9 +33,9 @@
         @Html.DisplayFor(modelItem => item.BlogSayisi, null, new { @class = "btn btn-primary btn-xs" })
     </td>
     <td>
-        @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" }) |
-        @Html.ActionLink("Detaylar", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
-        @Html.ActionLink("Kategoriyi Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-xs" }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
     </td>
 </tr>
 }
