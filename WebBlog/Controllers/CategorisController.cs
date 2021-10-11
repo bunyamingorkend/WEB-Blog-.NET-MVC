@@ -53,7 +53,7 @@ namespace WebBlog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KategoriAdi")] Categori categori)
+        public ActionResult Create([Bind(Include = "KategoriAdi")] Categori categori)
         {
             if (ModelState.IsValid)
             {
